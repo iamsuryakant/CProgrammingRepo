@@ -10,7 +10,7 @@ class Cylinder1{
     }
 
     double getHeight(){
-        return height;
+        return height; 
     }
 
     void setRadius(double r){
@@ -49,10 +49,10 @@ class Cylinder1{
         height = 1;
     }
 
-    public Cylinder1(double r, double h)
+    public Cylinder1(double radius, double height)
     {
-        radius = r;
-        height = h;
+        this.radius = radius;
+        this.height = height;
     }
 
 }
