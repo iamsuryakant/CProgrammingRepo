@@ -50,3 +50,4 @@ public class InterfaceDemo {
         s.inviteSale();
     }
 }
+
