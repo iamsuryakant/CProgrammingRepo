@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Launch Hello",
+            "request": "launch",
+            "mainClass": "JavaProgram.OOPConcept.Hello",
+            "projectName": "CProgrammingRepo_dceed9a1"
+        },
+        {
             "name": "g++.exe - Build and debug active file",
             "type": "cppdbg",
             "request": "launch",
