@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch PairOfConsectiveElement",
+            "request": "launch",
+            "mainClass": "JavaProgram.OOPConcept.PairOfConsectiveElement",
+            "projectName": "CProgrammingRepo_dceed9a1"
+        },
+        {
+            "type": "java",
+            "name": "Launch checkSum",
+            "request": "launch",
+            "mainClass": "JavaProgram.OOPConcept.checkSum",
+            "projectName": "CProgrammingRepo_dceed9a1"
+        },
+        {
+            "type": "java",
             "name": "Launch Hello",
             "request": "launch",
             "mainClass": "JavaProgram.OOPConcept.Hello",
