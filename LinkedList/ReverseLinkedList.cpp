@@ -12,12 +12,34 @@ struct Node {
     }
 };
 
-void reverseLL(Node *head)
+
+void PrintList(Node *head)
 {
-    if(head==NULL)
-        return;
-    reverseLL(head->next);
-    cout<<head->data<<" ";
+    Node *curr = head;
+    while (curr != NULL)
+    {
+        cout << curr->data << " ";
+        curr = curr->next;
+
+    }
+
+}
+
+Node *reverseLL(Node *head)
+{
+    Node* prev = NULL;
+    Node* curr = head;
+    Node *next = NULL;
+
+    while(curr != NULL)
+    {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+
+    }
+    return prev;
 }
 
 int main() {
@@ -26,6 +48,8 @@ int main() {
     head->next->next = new Node(3);
     head->next->next->next = new Node(4);
     head->next->next->next->next = new Node(5);
-    reverseLL(head);
+   Node *temp= reverseLL(head);
+    PrintList(temp);
+
     return 0;
 }
