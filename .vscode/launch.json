@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch stringPali",
+            "request": "launch",
+            "mainClass": "JavaProgram.OOPConcept.stringPali",
+            "projectName": "CProgrammingRepo_dceed9a1"
+        },
+        {
+            "type": "java",
             "name": "Launch CostOfString",
             "request": "launch",
             "mainClass": "Strings.CostOfString",
