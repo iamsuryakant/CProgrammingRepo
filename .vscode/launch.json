@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch netip",
+            "request": "launch",
+            "mainClass": "netip",
+            "projectName": "CProgrammingRepo_dceed9a1"
+        },
+        {
+            "type": "java",
+            "name": "Launch netid",
+            "request": "launch",
+            "mainClass": "netid",
+            "projectName": "CProgrammingRepo_dceed9a1"
+        },
+        {
+            "type": "java",
+            "name": "Launch classLoader",
+            "request": "launch",
+            "mainClass": "JavaProgram.OOPConcept.classLoader",
+            "projectName": "CProgrammingRepo_dceed9a1"
+        },
+        {
+            "type": "java",
             "name": "Launch stringPali",
             "request": "launch",
             "mainClass": "JavaProgram.OOPConcept.stringPali",
