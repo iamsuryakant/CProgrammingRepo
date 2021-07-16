@@ -6,6 +6,48 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch threadClass",
+            "request": "launch",
+            "mainClass": "JavaProgram.OOPConcept.threadClass",
+            "projectName": "CProgrammingRepo_dceed9a1"
+        },
+        {
+            "type": "java",
+            "name": "Launch javaStream",
+            "request": "launch",
+            "mainClass": "JavaProgram.OOPConcept.javaStream",
+            "projectName": "CProgrammingRepo_dceed9a1"
+        },
+        {
+            "type": "java",
+            "name": "Launch multiplePLambda",
+            "request": "launch",
+            "mainClass": "JavaProgram.OOPConcept.multiplePLambda",
+            "projectName": "CProgrammingRepo_dceed9a1"
+        },
+        {
+            "type": "java",
+            "name": "Launch GFG",
+            "request": "launch",
+            "mainClass": "JavaProgram.OOPConcept.GFG",
+            "projectName": "CProgrammingRepo_dceed9a1"
+        },
+        {
+            "type": "java",
+            "name": "Launch lambdaEx",
+            "request": "launch",
+            "mainClass": "JavaProgram.OOPConcept.lambdaEx",
+            "projectName": "CProgrammingRepo_dceed9a1"
+        },
+        {
+            "type": "java",
+            "name": "Launch Counter",
+            "request": "launch",
+            "mainClass": "JavaProgram.OOPConcept.Counter",
+            "projectName": "CProgrammingRepo_dceed9a1"
+        },
+        {
+            "type": "java",
             "name": "Launch netip",
             "request": "launch",
             "mainClass": "netip",
