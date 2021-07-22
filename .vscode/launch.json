@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch CRC_check",
+            "request": "launch",
+            "mainClass": "CRC_check",
+            "projectName": "CProgrammingRepo_dceed9a1"
+        },
+        {
+            "type": "java",
+            "name": "Launch CRC_gen",
+            "request": "launch",
+            "mainClass": "CRC_gen",
+            "projectName": "CProgrammingRepo_dceed9a1"
+        },
+        {
+            "type": "java",
+            "name": "Launch CRC",
+            "request": "launch",
+            "mainClass": "CRC",
+            "projectName": "CProgrammingRepo_dceed9a1"
+        },
+        {
+            "type": "java",
             "name": "Launch threadClass",
             "request": "launch",
             "mainClass": "JavaProgram.OOPConcept.threadClass",

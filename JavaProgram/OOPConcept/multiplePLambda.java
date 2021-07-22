@@ -1,9 +1,5 @@
 package JavaProgram.OOPConcept;
 
-import java.io.*;
-import java.util.*;
-import java.util.function.*;
-
 interface test3{
     void print(Integer p1, Integer p2);
 }
