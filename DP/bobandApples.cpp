@@ -15,7 +15,7 @@ int bobandApples(int m, int wt[], int val[], int n) {
     }
     for(int i = 1; i <= n; i++) {
         for(int j = 1; j <= m; j++) {
-            if(wt[i-1] < j) {
+            if(val[i] > j) {
                 dp[i][j] = dp[i-1][j];
             } else {
                 dp[i][j] = max(dp[i-1][j], dp[i-1][j-wt[i-1]] + val[i-1]);
