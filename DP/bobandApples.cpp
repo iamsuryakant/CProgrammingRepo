@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 
+//not correct code
+
 using namespace std;
 
 int bobandApples(int m, int wt[], int val[], int n) {
@@ -21,6 +23,7 @@ int bobandApples(int m, int wt[], int val[], int n) {
                 dp[i][j] = max(dp[i-1][j], dp[i-1][j-wt[i-1]] + val[i-1]);
             }
         }
+
     }
     return dp[n][m];
     
