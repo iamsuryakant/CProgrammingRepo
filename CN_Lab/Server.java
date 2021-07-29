@@ -25,7 +25,10 @@ public class Server
                 msgIn = inNet.readLine();
                 msgOut = msgIn.toLowerCase() + "\n";
                 outNet.writeBytes(msgOut);
+                cs.close();
+                s.close();
             }
+            
         }
         catch(IOException e) {
             System.out.println(e.getMessage());
