@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch quey",
+            "request": "launch",
+            "mainClass": "quey",
+            "projectName": "CProgrammingRepo_dceed9a1"
+        },
+        {
+            "type": "java",
             "name": "Launch CRC_check",
             "request": "launch",
             "mainClass": "CRC_check",
