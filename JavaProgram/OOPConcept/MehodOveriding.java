@@ -1,4 +1,3 @@
-package JavaProgram.OOPConcept;
 
 class Super{
     

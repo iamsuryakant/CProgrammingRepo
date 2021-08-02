@@ -1,4 +1,4 @@
-package JavaProgram.OOPConcept;
+
 
 abstract class Super1{
 
