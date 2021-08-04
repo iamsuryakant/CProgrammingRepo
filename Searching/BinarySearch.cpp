@@ -40,7 +40,6 @@ int main(){
     }
 
     int data; cin>>data;
-
     cout<<binarySearch(arr,n,data);
 
 
