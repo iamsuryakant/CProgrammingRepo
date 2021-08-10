@@ -47,7 +47,55 @@ void file_i_o()
     #endif
 }
 
+int largest(vector<int>& v, int n){
+
+    int maxn = v[0];
+
+    for(int i = 1; i < n; i++)
+    {
+        if(v[i] > maxn)
+            maxn = v[i];
+    }
+
+    return maxn;
+}
+
 int main(int argc, char const *argv[]) {
     file_i_o();
+
+    int t; cin>>t;
+
+    while(t--) {
+
+        int n; cin>>n;
+
+        vector<int> v(n);
+        int inp;
+        for(int i = 0; i<n; i++){
+            cin>>inp;
+            v.pb(inp);
+        }
+
+       // int maxn = v[0];
+
+        //int avg1 = 0, avg2 = 0;
+
+        int sum = 0;
+        int sol;
+
+        for(int i = 0; i<n; i++) {
+
+            sum += v[i];
+        }
+
+        sum = sum - largest(v, n);
+
+        int avg1 = sum/(n-1);
+        int avg2 = largest(v,n);
+        //avg2 = maxn;
+
+        cout<<(avg1+avg2)/2<<"\n";
+
+    }
     return 0;
 }
