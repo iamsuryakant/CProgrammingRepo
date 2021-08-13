@@ -1,5 +1,3 @@
-//Arr fi
-
 #include<bits/stdc++.h>
 //#include<ext/pb_ds/assoc_container.hpp>
 //using namespace __gnu_pbds;
@@ -13,7 +11,6 @@ using namespace std;
 #define vi              vector<ll>
 #define vs				vector<string>
 #define pii             pair<ll,ll>
-#define vp              vector<pair<ll,ll>>
 #define ump				unordered_map
 #define mp 				map
 #define pq_max          priority_queue<ll>
@@ -21,7 +18,7 @@ using namespace std;
 #define ff 				first
 #define ss 				second
 #define mid(l,r)        (l+(r-l)/2)
-#define loop(i,a,b) 	for(int i=(a);i<(b);i++)
+#define loop(i,a,b) 	for(int i=(a);i<=(b);i++)
 #define looprev(i,a,b) 	for(int i=(a);i>=(b);i--)
 #define log(args...) 	{ string _s = #args; replace(_s.begin(), _s.end(), ',', ' '); stringstream _ss(_s); istream_iterator<string> _it(_ss); err(_it, args); }
 #define logarr(arr,a,b)	for(int z=(a);z<=(b);z++) cout<<(arr[z])<<" ";cout<<endl;	
@@ -48,66 +45,33 @@ void file_i_o()
     #endif
 }
 
-// int largest(vector<int>& v, int n){
-
-//     int maxn = v[0];
-
-//     for(int i = 1; i < n; i++)
-//     {
-//         if(v[i] > maxn)
-//             maxn = v[i];
-//     }
-
-//     return maxn;
+// void solve(){
+    
 // }
-
-ll gcd(ll a, ll b)
-{
-    if(b == 0)
-        return a;
-
-    return gcd(b, a%b);
-}
-
-void solve(){
-
-    ll n,m; cin>>n>>m;
-
-    vp vec;
-
-    loop(i,0,m)
-    {
-        ll a, b;cin>>a>>b;
-        vec.pb(make_pair(a, b));
-    }
-
-    sort(vec.begin(), vec.end(), greater<pair<int, int>>());
-
-    ll l = 1, remainder = n, result = 0;
-
-    for(int i= 0; i<m && remainder >0; i++)
-    {
-        ll x = vec[i].first;
-        ll y = vec[i].second;
-
-        l = l*y/gcd(l,y);
-
-        result += (remainder-n/l) * x;
-        remainder = n/l;
-
-    }
-    cout<<result<<"\n";
-
-}
 
 int main(int argc, char const *argv[]) {
     file_i_o();
 
-    int t; cin>>t;
+    int xsum = 0, ysum = 0, zsum = 0;
+    int n; cin>>n;
 
-    while(t--){
-        solve();
+    while(n--){
+    
+        int x,y,z;
+        cin>>x>>y>>z;
+
+        xsum += x; 
+        ysum += y;
+        zsum += z;
+
+    
     }
-
+    if(xsum == 0 && ysum ==0 && zsum == 0)
+    {
+        cout<<"YES"<<"\n";
+    }
+    else{
+        cout<<"NO"<<endl;
+    }
     return 0;
 }
