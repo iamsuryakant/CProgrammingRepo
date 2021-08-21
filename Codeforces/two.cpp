@@ -18,7 +18,7 @@ using namespace std;
 #define ff 				first
 #define ss 				second
 #define mid(l,r)        (l+(r-l)/2)
-#define loop(i,a,b) 	for(int i=(a);i<=(b);i++)
+#define loop(i,b) 	for(int i=0;i<(b);i++)
 #define looprev(i,a,b) 	for(int i=(a);i>=(b);i--)
 #define log(args...) 	{ string _s = #args; replace(_s.begin(), _s.end(), ',', ' '); stringstream _ss(_s); istream_iterator<string> _it(_ss); err(_it, args); }
 #define logarr(arr,a,b)	for(int z=(a);z<=(b);z++) cout<<(arr[z])<<" ";cout<<endl;	
@@ -45,37 +45,35 @@ void file_i_o()
     #endif
 }
 
-int main(int argc, char const *argv[]) {
-    file_i_o();
+void solve(){
 
-    int coin, sum;
-    cin>>coin>>sum;
-
-    int denm[coin];
-    for(int i = 0; i < coin; i++)
-        cin>>denm[i];
-    
-    int dp[sum+1];
-
-    for(int i = 0; i <= sum; i++)
-        dp[i] = sum+1;
-
-    dp[0] = 0;
-
-    for(int i = 0; i<= sum; i++)
+    ll m,n,i,j,k,l,tmp,ans=0,pow2[35];
+    while(cin>>n>>k)
     {
-        for(int j = 0; j<coin; j++)
+        ll v[k+1];
+        fill(v,v+k,1);
+        ll sum=k;
+        for(i=k-1; i>=0; i--)
         {
-            if(denm[j] <= i)
+            while(sum+v[i]<=n)
             {
-                dp[i] = min(dp[i], 1+dp[i - denm[j]]);
+                sum+=v[i];
+                v[i]*=2;
             }
         }
+        if(sum!=n)
+            cout<<"NO"<<endl;
+        else
+        {
+            cout<<"YES"<<endl;
+            loop(i,k)cout<<v[i]<<" ";
+            cout<<endl;
+        }
     }
+}
 
-    if(dp[sum] == sum+1)
-        cout<<"0"<<endl;
-    else
-        cout<<dp[sum]<<endl;
+int main(int argc, char const *argv[]) {
+    file_i_o();
+    solve();
     return 0;
 }

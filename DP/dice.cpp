@@ -18,7 +18,7 @@ using namespace std;
 #define ff 				first
 #define ss 				second
 #define mid(l,r)        (l+(r-l)/2)
-#define loop(i,a,b) 	for(int i=(a);i<=(b);i++)
+#define loop(i,a,b) 	for(int i=(a);i< (b);i++)
 #define looprev(i,a,b) 	for(int i=(a);i>=(b);i--)
 #define log(args...) 	{ string _s = #args; replace(_s.begin(), _s.end(), ',', ' '); stringstream _ss(_s); istream_iterator<string> _it(_ss); err(_it, args); }
 #define logarr(arr,a,b)	for(int z=(a);z<=(b);z++) cout<<(arr[z])<<" ";cout<<endl;	
@@ -45,37 +45,26 @@ void file_i_o()
     #endif
 }
 
+//int dp[1000001];
 int main(int argc, char const *argv[]) {
     file_i_o();
 
-    int coin, sum;
-    cin>>coin>>sum;
+    int n; cin>>n;
 
-    int denm[coin];
-    for(int i = 0; i < coin; i++)
-        cin>>denm[i];
-    
-    int dp[sum+1];
-
-    for(int i = 0; i <= sum; i++)
-        dp[i] = sum+1;
-
-    dp[0] = 0;
-
-    for(int i = 0; i<= sum; i++)
+    vector<ll> dp(n+1, 0);
+    dp[0] = 1;
+    loop(i, 1, n+1)
     {
-        for(int j = 0; j<coin; j++)
+        for(int j = 1; j<= 6; j++)
         {
-            if(denm[j] <= i)
-            {
-                dp[i] = min(dp[i], 1+dp[i - denm[j]]);
-            }
+            if(j>i)
+                break;
+            dp[i] = (dp[i] + dp[i-j])%mod;
         }
     }
 
-    if(dp[sum] == sum+1)
-        cout<<"0"<<endl;
-    else
-        cout<<dp[sum]<<endl;
+    cout<<dp[n]<<"\n";
+
+
     return 0;
 }

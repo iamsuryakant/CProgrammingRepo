@@ -45,37 +45,37 @@ void file_i_o()
     #endif
 }
 
-int main(int argc, char const *argv[]) {
-    file_i_o();
+void solve(){
 
-    int coin, sum;
-    cin>>coin>>sum;
+    int t; cin>>t;
 
-    int denm[coin];
-    for(int i = 0; i < coin; i++)
-        cin>>denm[i];
-    
-    int dp[sum+1];
+    while(t--){
 
-    for(int i = 0; i <= sum; i++)
-        dp[i] = sum+1;
+        ll a, b, c; cin>>a>>b>>c;
 
-    dp[0] = 0;
+        ll p = 2*abs(b-a);
 
-    for(int i = 0; i<= sum; i++)
-    {
-        for(int j = 0; j<coin; j++)
-        {
-            if(denm[j] <= i)
+        ll res = 0;
+
+        if(b>p || a>p || c>p){
+            res = -1;
+        }
+
+        else{
+            res = c+p/2;
+            if(res>p)
             {
-                dp[i] = min(dp[i], 1+dp[i - denm[j]]);
+                res = c - p/2;
             }
         }
+        cout<<res << "\n";
+
     }
 
-    if(dp[sum] == sum+1)
-        cout<<"0"<<endl;
-    else
-        cout<<dp[sum]<<endl;
+}
+
+int main(int argc, char const *argv[]) {
+    file_i_o();
+    solve();
     return 0;
 }

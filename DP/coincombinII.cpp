@@ -48,34 +48,35 @@ void file_i_o()
 int main(int argc, char const *argv[]) {
     file_i_o();
 
-    int coin, sum;
-    cin>>coin>>sum;
+    int n, s; cin >> n >> s;
 
-    int denm[coin];
-    for(int i = 0; i < coin; i++)
-        cin>>denm[i];
-    
-    int dp[sum+1];
+    //vector<int> dp(s+1, 0);
 
-    for(int i = 0; i <= sum; i++)
-        dp[i] = sum+1;
+    int coins[n+1];
 
-    dp[0] = 0;
+    for(int i= 1; i<=n; i++)
+        cin>>coins[i];
 
-    for(int i = 0; i<= sum; i++)
+    int dp[n+1][s+1];
+
+    for(int i = 1; i <= n; i++)
     {
-        for(int j = 0; j<coin; j++)
+        for(int sum = 0; sum<= s; sum++)
         {
-            if(denm[j] <= i)
-            {
-                dp[i] = min(dp[i], 1+dp[i - denm[j]]);
-            }
+            if(sum == 0)
+                dp[i][sum] = 1;
+
+            else{
+                int o1 =(coins[i]>sum) ? 0 : dp[i][sum - coins[i]];
+                int o2 = (i == 1) ? 0 : dp[i-1][sum];
+
+                dp[i][sum] = (o1 + o2)%mod;
+            } 
         }
     }
 
-    if(dp[sum] == sum+1)
-        cout<<"0"<<endl;
-    else
-        cout<<dp[sum]<<endl;
+    cout<<dp[n][s];
+
+
     return 0;
 }

@@ -45,37 +45,36 @@ void file_i_o()
     #endif
 }
 
+int first[100];
+int value[100];
+
 int main(int argc, char const *argv[]) {
-    file_i_o();
-
-    int coin, sum;
-    cin>>coin>>sum;
-
-    int denm[coin];
-    for(int i = 0; i < coin; i++)
-        cin>>denm[i];
     
-    int dp[sum+1];
+    file_i_o();
+     int n, x; cin >> n>>x;
 
-    for(int i = 0; i <= sum; i++)
-        dp[i] = sum+1;
+    int arr[n];
 
-    dp[0] = 0;
+    for(int i = 0; i < n; i++)
+        cin>>arr[i];
 
-    for(int i = 0; i<= sum; i++)
-    {
-        for(int j = 0; j<coin; j++)
-        {
-            if(denm[j] <= i)
-            {
-                dp[i] = min(dp[i], 1+dp[i - denm[j]]);
+    //int value[0] = 0;
+
+    for(int i = 1; i <= n; i++){
+        value[i] = INT_MAX;
+
+        for(auto c:arr){
+            if(i - c >= 0 && value[i-c]+1 < value[i]){
+
+                value[i] = value[i-c]+1;
+                first[i] = c;
             }
         }
     }
 
-    if(dp[sum] == sum+1)
-        cout<<"0"<<endl;
-    else
-        cout<<dp[sum]<<endl;
+    while(n>0){
+        cout<<first[n]<<" \n";
+        n -= first[n];
+    }
     return 0;
 }

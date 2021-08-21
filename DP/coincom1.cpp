@@ -47,35 +47,5 @@ void file_i_o()
 
 int main(int argc, char const *argv[]) {
     file_i_o();
-
-    int coin, sum;
-    cin>>coin>>sum;
-
-    int denm[coin];
-    for(int i = 0; i < coin; i++)
-        cin>>denm[i];
-    
-    int dp[sum+1];
-
-    for(int i = 0; i <= sum; i++)
-        dp[i] = sum+1;
-
-    dp[0] = 0;
-
-    for(int i = 0; i<= sum; i++)
-    {
-        for(int j = 0; j<coin; j++)
-        {
-            if(denm[j] <= i)
-            {
-                dp[i] = min(dp[i], 1+dp[i - denm[j]]);
-            }
-        }
-    }
-
-    if(dp[sum] == sum+1)
-        cout<<"0"<<endl;
-    else
-        cout<<dp[sum]<<endl;
     return 0;
 }

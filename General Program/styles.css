@@ -1,0 +1,27 @@
+body{
+    height: auto;
+    background-image: linear-gradient(yellow 10%, green 85%);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+h1{
+    text-align: center;
+    text-shadow: 2px 2px 5px black;
+}
+div.mylogin{
+    display: block;
+    text-align: center;
+}
+form
+{
+    display: inline-block;
+    text-align: center;
+    border: solid black 1px;
+    width: 20%;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+    background-image: radial-gradient (orange 10%, blue 85%);
+}
