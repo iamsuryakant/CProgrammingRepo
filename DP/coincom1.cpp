@@ -14,7 +14,7 @@ using namespace std;
 #define ump				unordered_map
 #define mp 				map
 #define pq_max          priority_queue<ll>
-#define pq_min          priority_queue<ll,vi,greater<ll> >
+#define pq_min          priority_queue<ll,vi,greater<ll>>
 #define ff 				first
 #define ss 				second
 #define mid(l,r)        (l+(r-l)/2)
