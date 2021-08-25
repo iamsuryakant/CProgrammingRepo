@@ -1,41 +1,46 @@
-#include<iostream>
-using namespace std;
+#include <stdio.h>
 
-/*C++ Function to print leaders in an array */
-void printLeaders(int arr[], int size)
+// function for finding leaders
+void leaderprint(int arr[], int n)
 {
-	for (int i = 0; i < size; i++)
-	{
-		int j;
-		for (j = i+1; j < size; j++)
-		{
-			if (arr[i] <=arr[j])
-				break;
-		}
-		if (j == size) // the loop didn't break
-			cout << arr[i] << " ";
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = i; j < n; j++)
+        {
+            if (arr[i] < arr[j])
+            {
+                break;
+            }
 
-        ///cout<<arr[size];
-
+            if (j == n - 1)
+                printf("%d ", arr[i]);
+        } 
     }
-
-    // cout<< arr[size] << " ";
+    printf("\n");
 }
 
-/* Driver program to test above function */
-int main()
+int  main()
 {
 
-    int t; cin>>t;
+    int t;
+    scanf("%d", &t);
 
-    while(t--){
-        int n; cin>>n;
+    while (t--){
+
+        int n;
+        scanf("%d", &n);
+
         int arr[n];
 
-        for(int i = 0; i < n; i++)
-            cin >>arr[i];
-        //int n = sizeof(arr)/sizeof(arr[0]);
-        printLeaders(arr, n);
+        for (int i = 0; i < n; i++)
+        {
+            scanf("%d", &arr[i]);
+        }
+
+        //int n = sizeof(arr) / sizeof(arr[0]);
+        
+        // calling function
+        leaderprint(arr, n);
     }
-	return 0;
+    return 0;
 }

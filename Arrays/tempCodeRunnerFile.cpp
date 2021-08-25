@@ -1,13 +1,45 @@
-#include <bits/stdc++.h>
+#include <stdio.h>
 
-using namespace std;
+// function for finding leaders
+void leaderprint(int arr[], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = i; j < n; j++)
+        {
+            if (arr[i] < arr[j])
+            {
+                break;
+            }
 
-int main(){
+            if (j == n - 1)
+                printf("%d ", arr[i]);
+        }
+    }
+}
 
-    int s, n, m;
-    cin>>s>>n>>m;
+int  main()
+{
 
-    int res = (int) pow(fmod(pow(s,n),10), m) % 1000000007;
+    int t;
+    scanf("%d", &t);
 
-   cout<<res<<endl;
+    while (t--){
+
+        int n;
+        scanf("%d", &n);
+
+        int arr[n];
+
+        for (int i = 0; i < n; i++)
+        {
+            scanf("%d", &arr[i]);
+        }
+
+        //int n = sizeof(arr) / sizeof(arr[0]);
+        
+        // calling function
+        leaderprint(arr, n);
+    }
+    return 0;
 }
