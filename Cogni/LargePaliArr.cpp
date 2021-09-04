@@ -40,13 +40,13 @@ int main(){
     for (int i = 0; i < n; i++)
         cin>> arr[i];
 
-    sort(arr, arr + n);
+    //sort(arr, arr + n);
     int res = 0;
 
     for(int i = 0; i < n; i++)
     {
         if(isPali(arr[i]))
-            res = arr[i];
+            res = max(res, arr[i]);
     }
 
 
