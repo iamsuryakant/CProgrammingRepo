@@ -25,5 +25,6 @@ class Represent{
              int k=al.size();
              System.out.println(al.get(k-2)+" "+al.get(k-1));
             }
+        sc.close();
     }
 }
