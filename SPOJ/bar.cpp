@@ -4,7 +4,7 @@ using namespace std;
 int main(){
 
     int n; cin>>n;
-    int old = 1000000000;
+    int old = INT_MAX;
 
     while(n != 0)
     {
