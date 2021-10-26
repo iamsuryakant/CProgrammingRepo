@@ -9,6 +9,8 @@ bool isVowel(char c)
     return false;
 }
 
+
+
 int main() {
 
     string s; cin >> s;
