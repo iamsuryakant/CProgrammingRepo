@@ -39,3 +39,5 @@ int main() {
         cout << arr[i] << " ";
     return 0;
 }
+
+//https://ide.geeksforgeeks.org/YZ7St8SLiq
