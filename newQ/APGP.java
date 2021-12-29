@@ -1,3 +1,5 @@
+package newQ;
+
 public class APGP {
 
  public static void main(String[] args)

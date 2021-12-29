@@ -1,3 +1,5 @@
+package SPOJ;
+
 // import java.io.*;
 import java.util.*;
 

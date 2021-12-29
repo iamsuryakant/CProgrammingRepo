@@ -1,3 +1,5 @@
+package newQ;
+
 import java.util.*;
 class Represent{
     public static void main(String[] args) {

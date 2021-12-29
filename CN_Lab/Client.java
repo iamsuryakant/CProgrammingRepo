@@ -1,3 +1,5 @@
+package CN_Lab;
+
 import java.io.*;
 import java.net.*;
 

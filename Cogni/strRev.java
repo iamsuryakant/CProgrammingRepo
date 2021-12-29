@@ -1,3 +1,5 @@
+package Cogni;
+
 // import java.util.*;
 
 class strRev{
