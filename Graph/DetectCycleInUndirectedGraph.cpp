@@ -60,9 +60,10 @@ bool DFSRec(vector<int>adj[], int s, bool visited[], int parent)
         {
             if(DFSRec(adj, u, visited, s) == true)
                 return true;
-            else if(u != parent)
-                return true;
+           
         }
+        else if(u != parent)
+            return true;
     }
     return false;
 }
