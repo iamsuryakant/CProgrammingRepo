@@ -19,7 +19,6 @@ void KeepInd(vector<int> v, int n)
     }
 }
 
-
 int main(){
 
     int n;
