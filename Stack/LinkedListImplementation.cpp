@@ -58,6 +58,7 @@ int main(){
     ll.push(20);
     ll.push(30);
     ll.push(40);
+    ll.push(50);
 
     cout << ll.pop() <<endl;
 }
