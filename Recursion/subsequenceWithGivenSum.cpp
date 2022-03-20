@@ -18,6 +18,7 @@ void printSub(int ind, int arr[], vector<int>&ds,
        }
        return;
     }
+    
     // Picking
     ds.push_back(arr[ind]);
     s += arr[ind];

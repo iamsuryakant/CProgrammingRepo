@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch CurrencyConverter",
+            "request": "launch",
+            "mainClass": "JavaProgram.OOPConcept.CurrencyConverter",
+            "projectName": "CProgrammingRepo_aa993b62"
+        },
+        {
+            "type": "java",
             "name": "Launch strRev",
             "request": "launch",
             "mainClass": "strRev",
