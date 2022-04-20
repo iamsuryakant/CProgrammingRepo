@@ -8,7 +8,7 @@ void printSub(int ind, int arr[], int n, vector<int>&ds)
     {
         for(auto it:ds)
         {
-            cout<<it << " ";
+            cout << it << " ";
         }
         if(ds.size() == 0)
         {
