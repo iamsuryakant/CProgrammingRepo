@@ -23,54 +23,82 @@ using namespace std;
 #define fi              first
 #define sec             second
 #define mid(l,r)        (l+(r-l)/2)
-#define floop(i,a,b)    for(int i = (a); i <= (b); i++)
+#define floop(i,a,b)    for(int i = (a); i < (b); i++)
 #define rloop(i,a,b)    for(int i = (a); i >= (b); i--)
 
 
 void file_i_o()
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
 #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
 #endif
 }
 
-
-
-
 void solve() {
 
-    string s; cin >> s;
-    int t = 1;
-    floop(i, 0, s.length()) {
+	int t; cin >> t;
 
-        if (s[0] == '9' && t == 1)
-        {
-            t++;
-            continue;
-        }
+	while (t--)
+	{
+		int n; cin >> n;
 
-        if (s[i] - '0' <= 4)
-        {
-            continue;
-        }
+		int arr[n];
 
-        int t = 9 - (s[i] - '0');
-        s[i] = char(t) + '0';
-    }
+		//bool flag = true;
 
-    cout << s << endl;
+		floop(i, 0, n)
+		{
+			cin >> arr[i];
+		}
+
+		int ps = 0, ns = 0;
+
+		floop(i, 0, n)
+		{
+			if (arr[i] > 0) {
+				ps++;
+			}
+			else {
+				ns++;
+			}
+
+		}
+
+		int diff = abs(ps - ns);
+		//cout << diff << endl;
+
+		if (diff <= 1)
+		{
+			cout << "YES" << endl;
+		}
+		else if (diff == 2)
+		{
+			if ((ns % 2 == 0) && (ps % 2 == 0)) {
+				cout << "YES" << endl;
+			}
+			else {
+				cout << "NO" << endl;
+			}
+		}
+		else {
+			cout << "NO" << endl;
+		}
+
+		// if (flag)
+		// {
+		// 	cout << "Yes" << endl;
+		// }
+	}
 
 }
 
 
 int main() {
-    file_i_o();
-
-    solve();
-
-    return 0;
+	file_i_o();
+	solve();
+	return 0;
 }

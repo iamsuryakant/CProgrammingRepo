@@ -29,48 +29,79 @@ using namespace std;
 
 void file_i_o()
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
 #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
 #endif
+
 }
 
+// void sieve(int n, vector<int>&prime) {
 
+// 	vector<bool>mark(n + 1, true);
 
+// 	if (n <= 1)
+// 		mark[n] = false;
+
+// 	prime.push_back(2);
+
+// 	for (int i = 3; i <= n; i += 2)
+// 	{
+// 		if (mark[i]) {
+// 			prime.pb(i);
+
+// 			for (int j = i * i; j <= n; j += i)
+// 				mark[i] = false;
+// 		}
+// 	}
+
+// }
+
+bool isprime(int n) //n = 5
+{
+	if (n <= 1)
+		return false;
+
+	for (int i = 2; i * i <= n; i++)
+	{
+		if (n % i == 0)
+			return false;
+	}
+
+	return true;
+}
 
 void solve() {
 
-    string s; cin >> s;
-    int t = 1;
-    floop(i, 0, s.length()) {
+	int t; cin >> t;
 
-        if (s[0] == '9' && t == 1)
-        {
-            t++;
-            continue;
-        }
+	while (t--)
+	{
+		int n, m; cin >> n >> m;
 
-        if (s[i] - '0' <= 4)
-        {
-            continue;
-        }
 
-        int t = 9 - (s[i] - '0');
-        s[i] = char(t) + '0';
-    }
-
-    cout << s << endl;
+		for (int i = n; i <= m; i++)
+		{
+			if (isprime(i))
+				cout << i << endl;
+		}
+		cout << endl;
+		// for (int i = n; i <= m; i++)
+		// {
+		// 	if (pr[i])
+		// 		cout << i << endl;
+		// }
+		// cout << endl;
+	}
 
 }
 
 
 int main() {
-    file_i_o();
-
-    solve();
-
-    return 0;
+	file_i_o();
+	solve();
+	return 0;
 }

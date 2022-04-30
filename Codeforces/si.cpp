@@ -29,48 +29,66 @@ using namespace std;
 
 void file_i_o()
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
 #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
 #endif
 }
 
+vector<int> primes(int n) {
 
+	vector<int> ans;
 
+	bool mark[n + 1];
+	for (int i = 0; i < n + 1; i++)
+	{
+		mark[i] = true;
+	}
+
+	mark[0] = false;
+	mark[1] = false;
+
+	for (int i = 2; i * i <= n; i++)
+	{
+		if (mark[i] == true)
+		{
+			for (int j = i * i; j <= n; j += i)
+			{
+				mark[j] = false;
+			}
+		}
+	}
+
+	for (int i = 2; i <= n; i++)
+	{
+		if (mark[i])
+		{
+			ans.push_back(i);
+		}
+	}
+
+	return ans;
+}
 
 void solve() {
 
-    string s; cin >> s;
-    int t = 1;
-    floop(i, 0, s.length()) {
+	int n; cin >> n;
 
-        if (s[0] == '9' && t == 1)
-        {
-            t++;
-            continue;
-        }
+	vector<int> res = primes(n);
 
-        if (s[i] - '0' <= 4)
-        {
-            continue;
-        }
-
-        int t = 9 - (s[i] - '0');
-        s[i] = char(t) + '0';
-    }
-
-    cout << s << endl;
+	for (int i = 0; i < res.size(); i++)
+	{
+		cout << res[i] << endl;
+	}
 
 }
 
 
 int main() {
-    file_i_o();
-
-    solve();
-
-    return 0;
+	file_i_o();
+	solve();
+	return 0;
 }

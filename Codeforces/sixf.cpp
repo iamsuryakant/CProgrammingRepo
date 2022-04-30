@@ -29,48 +29,39 @@ using namespace std;
 
 void file_i_o()
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
 #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
 #endif
 }
 
-
-
-
 void solve() {
 
-    string s; cin >> s;
-    int t = 1;
-    floop(i, 0, s.length()) {
+	int t; cin >> t;
 
-        if (s[0] == '9' && t == 1)
-        {
-            t++;
-            continue;
-        }
+	while (t--) {
+		int n, m;
+		cin >> n >> m;
 
-        if (s[i] - '0' <= 4)
-        {
-            continue;
-        }
+		int c1 = n * 3;
+		int c2 = m * 2;
 
-        int t = 9 - (s[i] - '0');
-        s[i] = char(t) + '0';
-    }
-
-    cout << s << endl;
+		if (c1 < c2)
+		{
+			cout << c1 << endl;
+		} else {
+			cout << c2 << endl;
+		}
+	}
 
 }
 
 
 int main() {
-    file_i_o();
-
-    solve();
-
-    return 0;
+	file_i_o();
+	solve();
+	return 0;
 }

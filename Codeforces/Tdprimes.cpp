@@ -29,13 +29,54 @@ using namespace std;
 
 void file_i_o()
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
 #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
 #endif
+}
+
+//  Sieve of Eratosthenes
+
+vector<long long> sieve(long long n) {
+
+	vector<long long>isprimes;
+	vector<bool>mark(n + 1, true);
+
+	//  bool mark[n+1];
+
+	// for(int i = 0; i<n+1; i++)
+	// {
+	// 	mark[i] = true;
+	// }
+
+	mark[0] = false;
+	mark[1] = false;
+
+	for (ll i = 2; i * i <= n; i++)
+	{
+		if (mark[i])
+		{
+			// isprimes.push_back(i);
+
+			for (ll j = i * i; j <= n; j += i)
+			{
+				mark[j] = false;
+			}
+		}
+	}
+
+	for (ll i = 2; i <= n; i++)
+	{
+		//i = i % 100;
+		if (mark[i])
+		{
+			isprimes.push_back(i);
+		}
+	}
+	return isprimes;
 }
 
 
@@ -43,34 +84,25 @@ void file_i_o()
 
 void solve() {
 
-    string s; cin >> s;
-    int t = 1;
-    floop(i, 0, s.length()) {
+	vector<long long>ans = sieve(90000000);
+	//cout << ans[1000000 - 1] << endl;
 
-        if (s[0] == '9' && t == 1)
-        {
-            t++;
-            continue;
-        }
+	// for (int i = 0; i < ans.size(); i++)
+	// 	cout << ans[i] << endl;
 
-        if (s[i] - '0' <= 4)
-        {
-            continue;
-        }
+	int t; cin >> t;
+	while (t--)
+	{
+		int k; cin >> k;
 
-        int t = 9 - (s[i] - '0');
-        s[i] = char(t) + '0';
-    }
-
-    cout << s << endl;
+		cout << ans[k - 1] << endl;
+	}
 
 }
 
 
 int main() {
-    file_i_o();
-
-    solve();
-
-    return 0;
+	file_i_o();
+	solve();
+	return 0;
 }
