@@ -6,9 +6,9 @@ void DFS(vector<int>adj[], int s, stack<int>&st, vector<bool>&visited)
 {
 
     visited[s] = true;
-    for(int u:adj[s])
+    for (int u : adj[s])
     {
-        if(visited[u] == false)
+        if (visited[u] == false)
         {
             DFS(adj, u, st, visited);
         }
@@ -20,21 +20,21 @@ void DFS(vector<int>adj[], int s, stack<int>&st, vector<bool>&visited)
 void addEdge(vector<int> adj[], int u, int v)
 {
     adj[u].push_back(v);
-   // adj[v].push_back(u);
+    // adj[v].push_back(u);
 }
 
 
 
-int main(){
+int main() {
     int V;
     cin >> V;
 
     vector<int>adj[V];
 
-    for(int i = 0; i<V; i++)
+    for (int i = 0; i < V; i++)
     {
         int u, v;
-        cin>>u>>v;
+        cin >> u >> v;
 
         addEdge(adj, u, v);
     }
@@ -45,15 +45,15 @@ int main(){
 
     // DFS(adj, 0, V-1,   st, visited);
 
-    for(int i = 0; i<V; i++)
+    for (int i = 0; i < V; i++)
     {
-        if(visited[i] == false)
+        if (visited[i] == false)
         {
             DFS(adj, i, st, visited);
         }
     }
 
-    while(st.empty() == false)
+    while (st.empty() == false)
     {
         //cout<<st.pop()<<endl;
         int u = st.top();
