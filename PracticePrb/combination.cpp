@@ -93,14 +93,13 @@ void solve() {
 		cin >> A[i];
 	}
 
+	for (int i = 0; i < n; i++)
+	{
+		cout << A[i] << " ";
+	}
 
 
 	int B; cin >> B;
-
-
-	// for (auto it : A) {
-	// 	cout << it << " ";
-	// }
 
 	combinationSum(A, B);
 

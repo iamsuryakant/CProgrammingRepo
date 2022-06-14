@@ -38,78 +38,26 @@ void file_i_o()
 #endif
 }
 
-
-void combi(int ind, int n, vector<int> A, int B, vector<int>&ds) {
-
-	if (ind == n) {
-		if (B == 0) {
-			for (auto it : ds) {
-				cout << it << " ";
-			}
-			cout << endl;
-		}
-		return;
-	}
-
-	if (A[ind] <= B) {
-		//picking condition
-
-		ds.push_back(A[ind]);
-		combi(ind, n, A, B - A[ind], ds);
-		ds.pop_back();
-	}
-
-	//non picking
-
-	combi(ind + 1, n, A, B, ds);
-
-}
-
-
-void combinationSum(vector<int> &A, int B) {
-	// Your code here
-
-	int n = A.size();
-
-	//vector<vector<int>>ans;
-
-	vector<int>ds;
-
-	combi(0, n, A, B, ds);
-
-}
-
-
-
-
 void solve() {
 
-	int n; cin >> n;
+	int t; cin >> t;
 
-	vector<int>A(n);
-
-	for (int i = 0; i < n; i++)
+	while (t--)
 	{
-		cin >> A[i];
+		int n, x; cin >> n >> x;
+
+		if (n <= 6) {
+			cout << x << endl;
+		} else {
+			int count  = 0;
+			while (n > 0) {
+				n = n - 6;
+				count++;
+			}
+
+			cout << (x * count) << endl;
+		}
 	}
-
-
-
-	int B; cin >> B;
-
-
-	// for (auto it : A) {
-	// 	cout << it << " ";
-	// }
-
-	combinationSum(A, B);
-
-	// for (int i = 0; i < ans.size(); i++) {
-	// 	for (int j = 0; j < ans[0].size(); j++) {
-	// 		cout << ans[i][j] << " ";
-	// 	}
-	// 	cout << endl;
-	// }
 
 }
 

@@ -38,78 +38,64 @@ void file_i_o()
 #endif
 }
 
+void longest(int n, string s, string &ans) {
 
-void combi(int ind, int n, vector<int> A, int B, vector<int>&ds) {
+	unordered_map<char, int>mp;
 
-	if (ind == n) {
-		if (B == 0) {
-			for (auto it : ds) {
-				cout << it << " ";
-			}
-			cout << endl;
+	// int i = 0;
+	// while (i < n) {
+
+	// 	if (mp.find(s[i]) != mp.end()) {
+	// 		ans = "";
+	// 		mp[s[i]]--;
+	// 		//continue;
+	// 	} else {
+	// 		mp[s[i]]++;
+	// 		ans += s[i];
+	// 		i++;
+	// 	}
+
+	// 	//cout << ans << endl;
+	// }
+
+
+
+	for (int i = 0; i < n; i++)
+	{
+		if (mp.find(s[i]) != mp.end()) {
+			//ans = "";
+			mp[s[i]]--;
+			continue;
+		} else {
+			mp[s[i]]++;
+			ans += s[i];
 		}
-		return;
 	}
 
-	if (A[ind] <= B) {
-		//picking condition
+	cout << ans << endl;
 
-		ds.push_back(A[ind]);
-		combi(ind, n, A, B - A[ind], ds);
-		ds.pop_back();
-	}
-
-	//non picking
-
-	combi(ind + 1, n, A, B, ds);
 
 }
-
-
-void combinationSum(vector<int> &A, int B) {
-	// Your code here
-
-	int n = A.size();
-
-	//vector<vector<int>>ans;
-
-	vector<int>ds;
-
-	combi(0, n, A, B, ds);
-
-}
-
 
 
 
 void solve() {
 
-	int n; cin >> n;
+	string s; cin >> s;
 
-	vector<int>A(n);
+	int n = s.length();
 
-	for (int i = 0; i < n; i++)
-	{
-		cin >> A[i];
+	//int count = 0;
+
+	string ans = "";
+
+	if (n == 0) {
+		cout << ans << endl;
 	}
 
+	longest(n, s, ans);
 
 
-	int B; cin >> B;
-
-
-	// for (auto it : A) {
-	// 	cout << it << " ";
-	// }
-
-	combinationSum(A, B);
-
-	// for (int i = 0; i < ans.size(); i++) {
-	// 	for (int j = 0; j < ans[0].size(); j++) {
-	// 		cout << ans[i][j] << " ";
-	// 	}
-	// 	cout << endl;
-	// }
 
 }
 

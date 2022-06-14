@@ -38,79 +38,59 @@ void file_i_o()
 #endif
 }
 
-
-void combi(int ind, int n, vector<int> A, int B, vector<int>&ds) {
-
-	if (ind == n) {
-		if (B == 0) {
-			for (auto it : ds) {
-				cout << it << " ";
-			}
-			cout << endl;
-		}
-		return;
-	}
-
-	if (A[ind] <= B) {
-		//picking condition
-
-		ds.push_back(A[ind]);
-		combi(ind, n, A, B - A[ind], ds);
-		ds.pop_back();
-	}
-
-	//non picking
-
-	combi(ind + 1, n, A, B, ds);
-
-}
-
-
-void combinationSum(vector<int> &A, int B) {
-	// Your code here
-
-	int n = A.size();
-
-	//vector<vector<int>>ans;
-
-	vector<int>ds;
-
-	combi(0, n, A, B, ds);
-
-}
-
-
-
-
 void solve() {
 
-	int n; cin >> n;
+	int t; cin >> t;
 
-	vector<int>A(n);
+	while (t--) {
+		int a, b, k;
+		cin >> a >> b >> k;
 
-	for (int i = 0; i < n; i++)
-	{
-		cin >> A[i];
+		string s; cin >> s;
+		string s1; cin >> s1;
+
+		string c;
+
+		sort(s.begin(), s.end(), greater<char>());
+		sort(s1.begin(), s1.end(), greater<char>());
+
+		// cout << s << " " << s1 << endl;
+
+		// c += s.substr(0, k);
+		// s = s.erase(0, k);
+		// s1 = s1.erase(s1[0]);
+		// cout << s1 << endl;
+
+		int i = 0, j = 0;
+
+		while (s.empty() == false && s1.empty() == false) {
+
+			bool g = s1.back() < s.back();
+			if (g && j == k)
+				g = 0;
+
+			if (!g && i == k)
+				g = 1;
+
+			if (g) {
+				c.push_back(s1.back());
+				j++;
+				i = 0;
+				s1.pop_back();
+			} else {
+				c.push_back(s.back());
+				i++;
+				j = 0;
+				s.pop_back();
+			}
+		}
+
+
+		cout << c << endl;
+
+
+
 	}
-
-
-
-	int B; cin >> B;
-
-
-	// for (auto it : A) {
-	// 	cout << it << " ";
-	// }
-
-	combinationSum(A, B);
-
-	// for (int i = 0; i < ans.size(); i++) {
-	// 	for (int j = 0; j < ans[0].size(); j++) {
-	// 		cout << ans[i][j] << " ";
-	// 	}
-	// 	cout << endl;
-	// }
-
 }
 
 
@@ -119,3 +99,20 @@ int main() {
 	solve();
 	return 0;
 }
+
+
+// 5 9 3
+// caaca
+// bedededeb
+// 7 7 1
+// noskill
+// wxhtzdy
+// 6 4 2
+// aaaaaa
+// bbbb
+
+
+
+
+
+

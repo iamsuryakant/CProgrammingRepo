@@ -39,43 +39,66 @@ void file_i_o()
 }
 
 
-void combi(int ind, int n, vector<int> A, int B, vector<int>&ds) {
+int mini(string s1, string s2, int n, int m) {
 
-	if (ind == n) {
-		if (B == 0) {
-			for (auto it : ds) {
-				cout << it << " ";
+	int dp[n + 1][m + 1];
+
+
+	for (int i = 0; i <= n; i++)
+	{
+		for (int j = 0; j <= m; j++)
+		{
+			if (i == 0) {
+				dp[i][j] = j;
 			}
-			cout << endl;
+			else if (j == 0) {
+				dp[i][j] = i;
+			}
+			else if (s1[i - 1] == s2[j - 1]) {
+				dp[i][j] = dp[i - 1][j - 1];
+			} else {
+				dp[i][j] = 1 + min(dp[i - 1][j], min(dp[i][j - 1], dp[i - 1][j - 1]));
+			}
+
 		}
-		return;
 	}
 
-	if (A[ind] <= B) {
-		//picking condition
+	return dp[n][m];
 
-		ds.push_back(A[ind]);
-		combi(ind, n, A, B - A[ind], ds);
-		ds.pop_back();
-	}
+	// if (dp[i] == 0)
+	// 	return dp[];
 
-	//non picking
+	// if (m == 0)
+	// 	return n;
 
-	combi(ind + 1, n, A, B, ds);
+	// if (dp[n][m] != -1)
+	// {
+	// 	return dp[n][m];
+	// }
+
+	// if (s1[n - 1] == s2[m - 1])
+	// {
+	// 	return dp[n][m] = mini(s1, s2, n - 1, m - 1, dp);
+	// }
+
+	// return dp[n][m] = 1 + min(mini(s1, s2, n - 1, m, dp), //insert
+	//                           min(mini(s1, s2, n, m - 1, dp), // remove
+	//                               mini(s1, s2, n - 1, m - 1, dp))); // replace
 
 }
 
 
-void combinationSum(vector<int> &A, int B) {
-	// Your code here
 
-	int n = A.size();
+int minDistance(string word1, string word2) {
 
-	//vector<vector<int>>ans;
+	int n = word1.length();
+	int m = word2.length();
 
-	vector<int>ds;
+	//vector<vector<int>> dp(n + 1, vector<int>(m + 1, -1));
 
-	combi(0, n, A, B, ds);
+	return mini(word1, word2, n, m);
+
+
 
 }
 
@@ -84,38 +107,17 @@ void combinationSum(vector<int> &A, int B) {
 
 void solve() {
 
-	int n; cin >> n;
+	string s1, s2; cin >> s1 >> s2;
 
-	vector<int>A(n);
-
-	for (int i = 0; i < n; i++)
-	{
-		cin >> A[i];
-	}
-
-
-
-	int B; cin >> B;
-
-
-	// for (auto it : A) {
-	// 	cout << it << " ";
-	// }
-
-	combinationSum(A, B);
-
-	// for (int i = 0; i < ans.size(); i++) {
-	// 	for (int j = 0; j < ans[0].size(); j++) {
-	// 		cout << ans[i][j] << " ";
-	// 	}
-	// 	cout << endl;
-	// }
+	cout << minDistance(s1, s2);
 
 }
 
 
 int main() {
 	file_i_o();
+
+
 	solve();
 	return 0;
 }

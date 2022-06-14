@@ -39,46 +39,18 @@ void file_i_o()
 }
 
 
-void combi(int ind, int n, vector<int> A, int B, vector<int>&ds) {
-
-	if (ind == n) {
-		if (B == 0) {
-			for (auto it : ds) {
-				cout << it << " ";
-			}
-			cout << endl;
+bool isEqual(string a, string b)
+{
+	for (int i = 0; i < a.length(); i++)
+	{
+		if (a[i] != b[i])
+		{
+			return false;
 		}
-		return;
 	}
 
-	if (A[ind] <= B) {
-		//picking condition
-
-		ds.push_back(A[ind]);
-		combi(ind, n, A, B - A[ind], ds);
-		ds.pop_back();
-	}
-
-	//non picking
-
-	combi(ind + 1, n, A, B, ds);
-
+	return true;
 }
-
-
-void combinationSum(vector<int> &A, int B) {
-	// Your code here
-
-	int n = A.size();
-
-	//vector<vector<int>>ans;
-
-	vector<int>ds;
-
-	combi(0, n, A, B, ds);
-
-}
-
 
 
 
@@ -86,36 +58,63 @@ void solve() {
 
 	int n; cin >> n;
 
-	vector<int>A(n);
+	string s, s1;
+	cin >> s >> s1;
+
+	int count1 = 0, count2 = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (s[i] == 'b')
+		{
+			count1++;
+		}
+
+		if (s1[i] == 'b')
+		{
+			count2++;
+		}
+	}
+
+	if (count1 != count2)
+	{
+		cout << "NO" << endl;
+	}
+
+	int j = 0;
 
 	for (int i = 0; i < n; i++)
 	{
-		cin >> A[i];
+		if (s[i] == 'b') {
+			continue;
+		}
+
+		while (s1[i] == 'b') {
+			j++;
+		}
+
+		if ((s[i] != s1[j]) or (s[i] == 'a' and i > j) or (s[i] == 'c' and i < j))
+		{
+			cout << "NO" << endl;
+			break;
+		}
+		j++;
+
 	}
+	cout << "YES" << endl;
 
-
-
-	int B; cin >> B;
-
-
-	// for (auto it : A) {
-	// 	cout << it << " ";
-	// }
-
-	combinationSum(A, B);
-
-	// for (int i = 0; i < ans.size(); i++) {
-	// 	for (int j = 0; j < ans[0].size(); j++) {
-	// 		cout << ans[i][j] << " ";
-	// 	}
-	// 	cout << endl;
-	// }
 
 }
 
 
 int main() {
 	file_i_o();
-	solve();
+	int t; cin >> t;
+
+	while (t--) {
+
+		solve();
+	}
 	return 0;
 }
+
+

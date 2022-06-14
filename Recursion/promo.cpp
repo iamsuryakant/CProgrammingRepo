@@ -23,7 +23,7 @@ using namespace std;
 #define fi              first
 #define sec             second
 #define mid(l,r)        (l+(r-l)/2)
-#define floop(i,a,b)    for(int i = (a); i <= (b); i++)
+#define floop(i,a,b)    for(ll i = (a); i <= (b); i++)
 #define rloop(i,a,b)    for(int i = (a); i >= (b); i--)
 
 
@@ -38,78 +38,56 @@ void file_i_o()
 #endif
 }
 
-
-void combi(int ind, int n, vector<int> A, int B, vector<int>&ds) {
-
-	if (ind == n) {
-		if (B == 0) {
-			for (auto it : ds) {
-				cout << it << " ";
-			}
-			cout << endl;
-		}
-		return;
-	}
-
-	if (A[ind] <= B) {
-		//picking condition
-
-		ds.push_back(A[ind]);
-		combi(ind, n, A, B - A[ind], ds);
-		ds.pop_back();
-	}
-
-	//non picking
-
-	combi(ind + 1, n, A, B, ds);
-
-}
-
-
-void combinationSum(vector<int> &A, int B) {
-	// Your code here
-
-	int n = A.size();
-
-	//vector<vector<int>>ans;
-
-	vector<int>ds;
-
-	combi(0, n, A, B, ds);
-
-}
-
-
-
-
 void solve() {
 
-	int n; cin >> n;
+	ll n, q; cin >> n >> q;
 
-	vector<int>A(n);
+	ll arr[n];
 
 	for (int i = 0; i < n; i++)
 	{
-		cin >> A[i];
+		cin >> arr[i];
+	}
+
+	//vi ans;
+
+	sort(arr, arr + n, greater<int>());
+
+
+
+	ll pre_sum[n];
+
+	pre_sum[0] = arr[0];
+
+
+
+	for (ll i = 1; i < n; i++)
+	{
+		pre_sum[i] = arr[i] + pre_sum[i - 1];
+	}
+
+	// for (int i = 0; i < n; i++)
+	// {
+	// 	cout << pre_sum[i] << " ";
+	// }
+	// cout << endl;
+
+	while (q--)
+	{
+		ll x, y; cin >> x >> y;
+
+
+		if (x == y)
+		{
+			cout << pre_sum[x - 1] << endl;
+			continue;
+		}
+
+		cout << pre_sum[x - 1] - pre_sum[abs(y - x) - 1] << endl;
+
 	}
 
 
-
-	int B; cin >> B;
-
-
-	// for (auto it : A) {
-	// 	cout << it << " ";
-	// }
-
-	combinationSum(A, B);
-
-	// for (int i = 0; i < ans.size(); i++) {
-	// 	for (int j = 0; j < ans[0].size(); j++) {
-	// 		cout << ans[i][j] << " ";
-	// 	}
-	// 	cout << endl;
-	// }
 
 }
 

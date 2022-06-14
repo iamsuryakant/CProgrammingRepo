@@ -15,7 +15,7 @@ using namespace std;
 #define vi              vector<ll>
 #define vs              vector<string>
 #define pii             pair<ll,ll>
-#define ump             unordered_map
+#define ump             unordered_map<ll, ll>
 #define mp              map
 #define ps(x, y)        fixed<<setprecision(y)<<x
 #define pq_max          priority_queue<ll>                                  // max heap
@@ -38,78 +38,49 @@ void file_i_o()
 #endif
 }
 
-
-void combi(int ind, int n, vector<int> A, int B, vector<int>&ds) {
-
-	if (ind == n) {
-		if (B == 0) {
-			for (auto it : ds) {
-				cout << it << " ";
-			}
-			cout << endl;
-		}
-		return;
-	}
-
-	if (A[ind] <= B) {
-		//picking condition
-
-		ds.push_back(A[ind]);
-		combi(ind, n, A, B - A[ind], ds);
-		ds.pop_back();
-	}
-
-	//non picking
-
-	combi(ind + 1, n, A, B, ds);
-
-}
-
-
-void combinationSum(vector<int> &A, int B) {
-	// Your code here
-
-	int n = A.size();
-
-	//vector<vector<int>>ans;
-
-	vector<int>ds;
-
-	combi(0, n, A, B, ds);
-
-}
-
-
+// ll gcd(ll a, ll b)
+// {
+// 	if (b == 0)
+// 		return a;
+// 	return gcd(a, b % a);
+// }
 
 
 void solve() {
 
-	int n; cin >> n;
+	ll t; cin >> t;
 
-	vector<int>A(n);
+	while (t--) {
+		ll A, B; cin >> A >> B;
 
-	for (int i = 0; i < n; i++)
-	{
-		cin >> A[i];
+		ump mp;
+
+		ll count = 0;
+		floop(i, 1, sqrt(abs(A - B)))
+		{
+			if (abs(A - B) % i == 0) {
+				if (abs(A - B) / i == i)
+				{
+					count++;
+				}
+				else {
+					count++;
+					int ans = abs(A - B) / i;
+					mp[ans]++;
+				}
+			}
+		}
+
+		// for (auto it : mp) {
+		// 	cout << it.first << " ";
+		// }
+
+		cout << count + mp.size() << endl;
+		//mp[ans]++;
+
+
+
 	}
-
-
-
-	int B; cin >> B;
-
-
-	// for (auto it : A) {
-	// 	cout << it << " ";
-	// }
-
-	combinationSum(A, B);
-
-	// for (int i = 0; i < ans.size(); i++) {
-	// 	for (int j = 0; j < ans[0].size(); j++) {
-	// 		cout << ans[i][j] << " ";
-	// 	}
-	// 	cout << endl;
-	// }
 
 }
 

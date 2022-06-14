@@ -38,78 +38,50 @@ void file_i_o()
 #endif
 }
 
-
-void combi(int ind, int n, vector<int> A, int B, vector<int>&ds) {
-
-	if (ind == n) {
-		if (B == 0) {
-			for (auto it : ds) {
-				cout << it << " ";
-			}
-			cout << endl;
-		}
-		return;
-	}
-
-	if (A[ind] <= B) {
-		//picking condition
-
-		ds.push_back(A[ind]);
-		combi(ind, n, A, B - A[ind], ds);
-		ds.pop_back();
-	}
-
-	//non picking
-
-	combi(ind + 1, n, A, B, ds);
-
-}
-
-
-void combinationSum(vector<int> &A, int B) {
-	// Your code here
-
-	int n = A.size();
-
-	//vector<vector<int>>ans;
-
-	vector<int>ds;
-
-	combi(0, n, A, B, ds);
-
-}
-
-
-
-
 void solve() {
 
-	int n; cin >> n;
+	int t; cin >> t;
 
-	vector<int>A(n);
+	while (t--) {
+		int n; cin >> n;
 
-	for (int i = 0; i < n; i++)
-	{
-		cin >> A[i];
+		int arr[1010];
+		int b[1010];
+
+		for (int i = 1; i <= n; i++) {
+			cin >> arr[i];
+
+			b[i] = i;
+
+		}
+
+		if (n == 1)
+		{
+			cout << -1 << endl;
+		}
+		else {
+
+
+			for (int i = 1; i < n; i++)
+			{
+				if (b[i] == arr[i])
+				{
+					swap(b[i], b[i + 1]);
+				}
+			}
+
+			if (arr[n] == b[n]) {
+				swap(b[n - 1], b[n]);
+			}
+
+			for (int i = 1; i <= n; i++)
+			{
+				cout << b[i] << " ";
+			}
+			cout << endl;
+
+		}
 	}
-
-
-
-	int B; cin >> B;
-
-
-	// for (auto it : A) {
-	// 	cout << it << " ";
-	// }
-
-	combinationSum(A, B);
-
-	// for (int i = 0; i < ans.size(); i++) {
-	// 	for (int j = 0; j < ans[0].size(); j++) {
-	// 		cout << ans[i][j] << " ";
-	// 	}
-	// 	cout << endl;
-	// }
 
 }
 

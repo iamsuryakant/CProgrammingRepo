@@ -39,77 +39,70 @@ void file_i_o()
 }
 
 
-void combi(int ind, int n, vector<int> A, int B, vector<int>&ds) {
-
-	if (ind == n) {
-		if (B == 0) {
-			for (auto it : ds) {
-				cout << it << " ";
-			}
-			cout << endl;
-		}
+void permute(int idx, int n, vector<int>&arr, vector<vector<int>>&ans)
+{
+	if (idx == n)
+	{
+		ans.push_back(arr);
 		return;
 	}
 
-	if (A[ind] <= B) {
-		//picking condition
-
-		ds.push_back(A[ind]);
-		combi(ind, n, A, B - A[ind], ds);
-		ds.pop_back();
+	for (int i = idx; i < n; i++)
+	{
+		swap(arr[idx], arr[i]);
+		permute(idx + 1, n, arr, ans);
+		swap(arr[idx], arr[i]);
 	}
-
-	//non picking
-
-	combi(ind + 1, n, A, B, ds);
-
 }
 
 
-void combinationSum(vector<int> &A, int B) {
-	// Your code here
-
-	int n = A.size();
-
-	//vector<vector<int>>ans;
-
-	vector<int>ds;
-
-	combi(0, n, A, B, ds);
-
-}
 
 
 
 
 void solve() {
 
-	int n; cin >> n;
+	int t; cin >> t;
 
-	vector<int>A(n);
+	while (t--) {
 
-	for (int i = 0; i < n; i++)
-	{
-		cin >> A[i];
+
+		int n; cin >> n;
+
+		vector<int>arr(n);
+
+		for (int i = 0; i < n; i++)
+		{
+			cin >> arr[i];
+		}
+
+		if (n == 1) {
+			cout << -1 << endl;
+		}
+
+		vector<vector<int>> ans;
+		vector<int>ds;
+
+		permute(0, n, arr, ans);
+
+		sort(ans.begin(), ans.end());
+
+		for (int i = 0; i < ans.size(); i++)
+		{
+			//int k = i;
+			for (int j = 0; j < ans[0].size(); j++) {
+				int k
+				if (arr[j] == ans[i][j]) {
+					continue;
+				} else {
+					cout << ans[i][j] << " ";
+				}
+			}
+			cout << endl;
+			//break;
+		}
 	}
-
-
-
-	int B; cin >> B;
-
-
-	// for (auto it : A) {
-	// 	cout << it << " ";
-	// }
-
-	combinationSum(A, B);
-
-	// for (int i = 0; i < ans.size(); i++) {
-	// 	for (int j = 0; j < ans[0].size(); j++) {
-	// 		cout << ans[i][j] << " ";
-	// 	}
-	// 	cout << endl;
-	// }
+	//cout << endl;
 
 }
 

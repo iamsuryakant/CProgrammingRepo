@@ -38,78 +38,56 @@ void file_i_o()
 #endif
 }
 
+//2 7 11 15
 
-void combi(int ind, int n, vector<int> A, int B, vector<int>&ds) {
+vector<int> twoSum(vector<int>& nums, int target) {
 
-	if (ind == n) {
-		if (B == 0) {
-			for (auto it : ds) {
-				cout << it << " ";
-			}
-			cout << endl;
+	int n = nums.size() - 1;
+
+	vector<int>ans;
+
+	int idx1 = 0, idx2 = 1;
+
+	// int sum = 0;
+
+	while (idx1 < n) {
+
+		if (idx2 > n) {
+			idx1 = idx1 + 1;
+			idx2 = idx1 + 1;
+			//idx1++;
 		}
-		return;
+
+		if ((nums[idx1] + nums[idx2]) == target) {
+			ans.push_back(idx1 + 1);
+			ans.push_back(idx2 + 1);
+			break;
+		} else {
+			idx2++; //8
+		}
+
 	}
-
-	if (A[ind] <= B) {
-		//picking condition
-
-		ds.push_back(A[ind]);
-		combi(ind, n, A, B - A[ind], ds);
-		ds.pop_back();
-	}
-
-	//non picking
-
-	combi(ind + 1, n, A, B, ds);
-
+	return ans;
 }
-
-
-void combinationSum(vector<int> &A, int B) {
-	// Your code here
-
-	int n = A.size();
-
-	//vector<vector<int>>ans;
-
-	vector<int>ds;
-
-	combi(0, n, A, B, ds);
-
-}
-
-
 
 
 void solve() {
 
 	int n; cin >> n;
 
-	vector<int>A(n);
+	vector<int>nums(n);
 
 	for (int i = 0; i < n; i++)
-	{
-		cin >> A[i];
+		cin >> nums[i];
+
+	int target; cin >> target;
+
+
+	vector<int>ans = twoSum(nums, target);
+
+	for (int i = 0; i < ans.size(); i++) {
+		cout << ans[i] << " ";
 	}
-
-
-
-	int B; cin >> B;
-
-
-	// for (auto it : A) {
-	// 	cout << it << " ";
-	// }
-
-	combinationSum(A, B);
-
-	// for (int i = 0; i < ans.size(); i++) {
-	// 	for (int j = 0; j < ans[0].size(); j++) {
-	// 		cout << ans[i][j] << " ";
-	// 	}
-	// 	cout << endl;
-	// }
 
 }
 
