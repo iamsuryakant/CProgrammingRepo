@@ -44,7 +44,7 @@ bool isPattern(string s1, string s2)
 // Improved Naive Pattern Searching
 // Time Complexity = Theta(n).
 
-int isPatternDist(string s1, string s2)
+void isPatternDist(string s1, string s2)
 {
 	int n = s1.length();
 	int m = s2.length();
