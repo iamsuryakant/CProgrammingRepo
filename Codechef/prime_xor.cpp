@@ -29,45 +29,59 @@ using namespace std;
 
 void file_i_o()
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
 #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
 #endif
 }
 
 void solve() {
 
-    int n; cin >> n;
+	vector<int>a;
 
-    vector<int>p(n + 1);
+	vector<int>b(3);
 
-    for (int i = 1; i <= n; i++)
-    {
-        cin >> p[i];
-    }
+	cin >> b[0] >> b[1];
 
-    int ans = 0;
+	b[2] = b[0] ^ b[1];
 
-    for (int i = 1; i <= n; i++)
-    {
-        ans = __gcd(ans, abs(p[i] - i));
-    }
+	a.pb(2);
 
-    cout << ans << endl;
+	if (b[0] % 2 == 0)
+	{
+		a.pb(2 ^ b[1]);
+		a.pb(2 ^ b[2]);
+	} else if (b[1] % 2 == 0)
+	{
+		a.pb(2 ^ b[0]);
+		a.pb(2 ^ b[2]);
+	} else if (b[2] % 2 == 0)
+	{
+		a.pb(2 ^ b[1]);
+		a.pb(2 ^ b[0]);
+	}
+
+	sort(a.begin(), a.end());
+
+	for (int i = 0; i < 3; i++)
+	{
+		cout << a[i] << " ";
+	}
+	cout << endl;
 
 }
 
 
 int main() {
-    file_i_o();
-    int t; cin >> t;
+	file_i_o();
+	int t; cin >> t;
 
-    while (t--) {
+	while (t--) {
 
-        solve();
-    }
-    return 0;
+		solve();
+	}
+	return 0;
 }
