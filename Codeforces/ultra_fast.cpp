@@ -38,35 +38,37 @@ void file_i_o()
 #endif
 }
 
-const int N = 5;
 void solve() {
 
-	vector<vector<int>>matrix(N, vector<int>(N));
-	int xind = 0, yind = 0;
+	string s1, s2; cin >> s1 >> s2;
 
-	for (int i = 0; i < N; i++)
+	string ans = "";
+
+	for (int i = 0; i < s1.length(); i++)
 	{
-		for (int j = 0; j < N; j++)
+		if ((s1[i] == '0') && (s2[i] == '0'))
 		{
-			cin >> matrix[i][j];
-
-			if (matrix[i][j] == 1)
-			{
-				xind = i;
-				yind = j;
-			}
+			ans += '0';
+		} else if (((s1[i] == '1') && (s2[i] == '0')) ||
+		           ((s1[i] == '0') && (s2[i] == '1')))
+		{
+			ans += '1';
+		} else if (((s1[i] == '1') && (s2[i] == '1')))
+		{
+			ans += '0';
 		}
 	}
 
-	cout << (abs(xind - 2) + abs(yind - 2)) << endl;
+	cout << ans << endl;
+
 }
 
 
 int main() {
 	file_i_o();
-	//int t; cin >> t;
+	// int t; cin>>t;
 
-	//while (t--) {
+	// while(t--){
 
 	solve();
 	//}

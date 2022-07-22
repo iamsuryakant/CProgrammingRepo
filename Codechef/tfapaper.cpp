@@ -38,37 +38,21 @@ void file_i_o()
 #endif
 }
 
-const int N = 5;
 void solve() {
+	int n, m; cin >> n >> m;
 
-	vector<vector<int>>matrix(N, vector<int>(N));
-	int xind = 0, yind = 0;
+	cout << (n - m) << endl;
 
-	for (int i = 0; i < N; i++)
-	{
-		for (int j = 0; j < N; j++)
-		{
-			cin >> matrix[i][j];
-
-			if (matrix[i][j] == 1)
-			{
-				xind = i;
-				yind = j;
-			}
-		}
-	}
-
-	cout << (abs(xind - 2) + abs(yind - 2)) << endl;
 }
 
 
 int main() {
 	file_i_o();
-	//int t; cin >> t;
+	int t; cin >> t;
 
-	//while (t--) {
+	while (t--) {
 
-	solve();
-	//}
+		solve();
+	}
 	return 0;
 }

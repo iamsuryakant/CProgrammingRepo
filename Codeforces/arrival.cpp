@@ -38,35 +38,35 @@ void file_i_o()
 #endif
 }
 
-const int N = 5;
 void solve() {
 
-	vector<vector<int>>matrix(N, vector<int>(N));
-	int xind = 0, yind = 0;
-
-	for (int i = 0; i < N; i++)
+	int n, a;
+	cin >> n >> a;
+	int mina(a), maxa(a), mini(0), maxi(0);
+	for (int i = 1; i < n; ++i)
 	{
-		for (int j = 0; j < N; j++)
+		cin >> a;
+		if (a > maxa)
 		{
-			cin >> matrix[i][j];
-
-			if (matrix[i][j] == 1)
-			{
-				xind = i;
-				yind = j;
-			}
+			maxa = a;
+			maxi = i;
+		}
+		if (a <= mina)
+		{
+			mina = a;
+			mini = i;
 		}
 	}
+	cout << maxi + (n - 1 - mini) - (mini < maxi ? 1 : 0) << endl;
 
-	cout << (abs(xind - 2) + abs(yind - 2)) << endl;
 }
 
 
 int main() {
 	file_i_o();
-	//int t; cin >> t;
+	// int t; cin>>t;
 
-	//while (t--) {
+	// while(t--){
 
 	solve();
 	//}

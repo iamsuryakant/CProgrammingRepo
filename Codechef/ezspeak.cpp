@@ -38,37 +38,61 @@ void file_i_o()
 #endif
 }
 
-const int N = 5;
+bool isVowel(char s)
+{
+	if (s == 'a' || s == 'e' || s == 'i' || s == 'o' || s == 'u')
+	{
+		return true;
+	}
+
+	return false;
+}
+
 void solve() {
 
-	vector<vector<int>>matrix(N, vector<int>(N));
-	int xind = 0, yind = 0;
+	int n; cin >> n;
 
-	for (int i = 0; i < N; i++)
+	string s; cin >> s;
+
+	transform(s.begin(), s.end(), s.begin(), ::tolower);
+
+	int count = 0;
+
+	if (n <= 3)
 	{
-		for (int j = 0; j < N; j++)
-		{
-			cin >> matrix[i][j];
+		cout << "YES" << endl;
+	} else {
 
-			if (matrix[i][j] == 1)
-			{
-				xind = i;
-				yind = j;
+		int new_count = 0;
+		for (int i = 0; i < n; i++)
+		{
+			if (!isVowel(s[i])) {
+				count += 1;
+			} else {
+				new_count = max(new_count, count);
+				count = 0;
+				continue;
 			}
+		}
+		//cout << new_count << " " << count << endl;
+		if (new_count >= 4 || count >= 4)
+		{
+			cout << "NO" << endl;
+		} else {
+			cout << "YES" << endl;
 		}
 	}
 
-	cout << (abs(xind - 2) + abs(yind - 2)) << endl;
 }
 
 
 int main() {
 	file_i_o();
-	//int t; cin >> t;
+	int t; cin >> t;
 
-	//while (t--) {
+	while (t--) {
 
-	solve();
-	//}
+		solve();
+	}
 	return 0;
 }

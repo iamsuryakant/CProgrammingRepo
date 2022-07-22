@@ -38,37 +38,39 @@ void file_i_o()
 #endif
 }
 
-const int N = 5;
 void solve() {
 
-	vector<vector<int>>matrix(N, vector<int>(N));
-	int xind = 0, yind = 0;
+	int n; cin >> n;
 
-	for (int i = 0; i < N; i++)
-	{
-		for (int j = 0; j < N; j++)
-		{
-			cin >> matrix[i][j];
+	int arr[3];
 
-			if (matrix[i][j] == 1)
-			{
-				xind = i;
-				yind = j;
-			}
+	cin >> arr[0] >> arr[1] >> arr[2];
+
+	int count = 0;
+
+	if (n == 0) {
+		cout << "NO" << endl;
+	} else {
+		while (arr[n - 1] != 0) {
+			count++;
+			n = arr[n - 1];
 		}
+
+		cout << ((count == 2) ? "YES" : "NO") << endl;
 	}
 
-	cout << (abs(xind - 2) + abs(yind - 2)) << endl;
+
+
 }
 
 
 int main() {
 	file_i_o();
-	//int t; cin >> t;
+	int t; cin >> t;
 
-	//while (t--) {
+	while (t--) {
 
-	solve();
-	//}
+		solve();
+	}
 	return 0;
 }

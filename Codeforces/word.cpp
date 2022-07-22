@@ -38,37 +38,39 @@ void file_i_o()
 #endif
 }
 
-const int N = 5;
 void solve() {
 
-	vector<vector<int>>matrix(N, vector<int>(N));
-	int xind = 0, yind = 0;
-
-	for (int i = 0; i < N; i++)
+	string s; cin >> s;
+	int countup = 0, countlo = 0;
+	for (int i = 0; i < s.length(); i++)
 	{
-		for (int j = 0; j < N; j++)
-		{
-			cin >> matrix[i][j];
-
-			if (matrix[i][j] == 1)
-			{
-				xind = i;
-				yind = j;
-			}
+		if (s[i] >= 65 && s[i] <= 90) {
+			countup++;
+		}
+		else {
+			countlo++;
 		}
 	}
 
-	cout << (abs(xind - 2) + abs(yind - 2)) << endl;
+	if (countup > countlo)
+	{
+		transform(s.begin(), s.end(), s.begin(), ::toupper);
+	} else {
+		transform(s.begin(), s.end(), s.begin(), ::tolower);
+	}
+
+	cout << s << endl;
+
 }
 
 
 int main() {
 	file_i_o();
-	//int t; cin >> t;
+	//int t; cin>>t;
 
-	//while (t--) {
+	// while(t--){
 
 	solve();
-	//}
+	// }
 	return 0;
 }

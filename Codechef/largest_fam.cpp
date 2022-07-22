@@ -18,12 +18,12 @@ using namespace std;
 #define ump             unordered_map
 #define mp              map
 #define ps(x, y)        fixed<<setprecision(y)<<x
-#define pq_max          priority_queue<ll>                                  // max heap
+#define pq_max          priority_queue<int>                                  // max heap
 #define pq_min          priority_queue<ll,vi,greater<ll> >                  // min heap
 #define fi              first
 #define sec             second
 #define mid(l,r)        (l+(r-l)/2)
-#define floop(i,a,b)    for(int i = (a); i <= (b); i++)
+#define floop(i,a,b)    for(int i = (a); i < (b); i++)
 #define rloop(i,a,b)    for(int i = (a); i >= (b); i--)
 
 
@@ -38,37 +38,50 @@ void file_i_o()
 #endif
 }
 
-const int N = 5;
 void solve() {
 
-	vector<vector<int>>matrix(N, vector<int>(N));
-	int xind = 0, yind = 0;
+	int n; cin >> n;
 
-	for (int i = 0; i < N; i++)
+	int arr[n];
+
+	floop(i, 0, n)
 	{
-		for (int j = 0; j < N; j++)
-		{
-			cin >> matrix[i][j];
-
-			if (matrix[i][j] == 1)
-			{
-				xind = i;
-				yind = j;
-			}
-		}
+		cin >> arr[i];
 	}
 
-	cout << (abs(xind - 2) + abs(yind - 2)) << endl;
+	pq_max pq;
+
+	int sum = 0;
+
+	floop(i, 0, n)
+	{
+		pq.push(arr[i]);
+		sum += arr[i];
+	}
+
+
+	int ans = n;
+
+
+	while (sum >= n)
+	{
+		ans--; // 2
+		sum -= pq.top();  // 3
+		pq.pop();
+	}
+
+	cout << ans << endl;
+
 }
 
 
 int main() {
 	file_i_o();
-	//int t; cin >> t;
+	int t; cin >> t;
 
-	//while (t--) {
+	while (t--) {
 
-	solve();
-	//}
+		solve();
+	}
 	return 0;
 }

@@ -23,7 +23,7 @@ using namespace std;
 #define fi              first
 #define sec             second
 #define mid(l,r)        (l+(r-l)/2)
-#define floop(i,a,b)    for(int i = (a); i <= (b); i++)
+#define floop(i,a,b)    for(int i = (a); i < (b); i++)
 #define rloop(i,a,b)    for(int i = (a); i >= (b); i--)
 
 
@@ -38,37 +38,40 @@ void file_i_o()
 #endif
 }
 
-const int N = 5;
+
+
+
 void solve() {
 
-	vector<vector<int>>matrix(N, vector<int>(N));
-	int xind = 0, yind = 0;
+	int n, m; cin >> n >> m;
 
-	for (int i = 0; i < N; i++)
+	string ch(m, 'B');
+
+	while (n--)
 	{
-		for (int j = 0; j < N; j++)
-		{
-			cin >> matrix[i][j];
+		int x; cin >> x;
+		x--;
 
-			if (matrix[i][j] == 1)
-			{
-				xind = i;
-				yind = j;
-			}
-		}
+		x = min(x, m - x - 1);
+
+		if (ch[x] == 'B') ch[x] = 'A';
+		else ch[m - x - 1] = 'A';
 	}
 
-	cout << (abs(xind - 2) + abs(yind - 2)) << endl;
+	cout << ch << endl;
+
+
 }
 
 
 int main() {
 	file_i_o();
-	//int t; cin >> t;
+	int t; cin >> t;
 
-	//while (t--) {
+	while (t--) {
 
-	solve();
-	//}
+		solve();
+	}
 	return 0;
 }
+

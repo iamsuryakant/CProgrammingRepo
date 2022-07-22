@@ -38,27 +38,63 @@ void file_i_o()
 #endif
 }
 
-const int N = 5;
-void solve() {
 
-	vector<vector<int>>matrix(N, vector<int>(N));
-	int xind = 0, yind = 0;
+vector<int> sieve(long long n) {
 
-	for (int i = 0; i < N; i++)
+	vector<int>isprimes;
+	vector<bool>mark(n + 1, true);
+	mark[0] = false;
+	mark[1] = false;
+
+	for (int i = 2; i * i <= n; i++)
 	{
-		for (int j = 0; j < N; j++)
+		if (mark[i])
 		{
-			cin >> matrix[i][j];
+			// isprimes.push_back(i);
 
-			if (matrix[i][j] == 1)
+			for (int j = i * i; j <= n; j += i)
 			{
-				xind = i;
-				yind = j;
+				mark[j] = false;
 			}
 		}
 	}
 
-	cout << (abs(xind - 2) + abs(yind - 2)) << endl;
+	for (int i = 2; i <= n; i++)
+	{
+		if (mark[i])
+		{
+			isprimes.push_back(i);
+		}
+	}
+	return isprimes;
+}
+
+
+void solve() {
+
+	int n, m; cin >> n >> m;
+
+	int N = 50;
+
+	vector<int>primes = sieve(N);
+	bool flag = false;
+
+	for (int i = 0; i < primes.size() - 1; i++)
+	{
+		if (primes[i] == n && primes[i + 1] == m)
+		{
+			flag = true;
+			break;
+		}
+	}
+
+	if (flag)
+	{
+		cout << "YES" << endl;
+	} else {
+		cout << "NO" << endl;
+	}
+
 }
 
 
