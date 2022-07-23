@@ -6,7 +6,7 @@
 using namespace std;
 
 
-#define ll              long long int
+#define int              long long int
 #define ld              long double
 #define mod             1000000007
 #define inf             1e18
@@ -40,65 +40,53 @@ void file_i_o()
 
 void solve() {
 
-	string s; cin >> s;
-	// cout << s.length() << endl;
+	int n; cin >> n;
 
-	string rem = "";
+	int arr[n];
 
-	int count = 0, counts = 0;
-
-	sort(s.begin(), s.end());
-
-	//cout << s << endl;
-
-	for (int i = 0; i < s.length(); i++)
+	for (int i = 0; i < n; i++)
 	{
-		if (s[i] == '+')
-			count++;
-		else
-			counts++;
+		int x; cin >> x;
+
+		arr[x] = i + 1;
 	}
 
+	// for (int i = 1; i <= n; i++)
+	// {
+	// 	cout << arr[i] << " ";
+	// }
 
+	int countl = 0, countr = 0;
+	// int ansl = 0, ansr = 0;
 
-	for (int i = count; i < s.length(); i++)
+	int m; cin >> m;
+
+	while (m--)
 	{
-		rem += s[i];
+		int x; cin >> x;
+
+		countl += arr[x];
+		countr += n - arr[x] + 1;
+
+		// ansr += (countr);
+		// //cout << ansr + 1 << endl;
+
 	}
 
-	// cout << rem << endl;
+	cout << countl << " " << countr << endl;
 
-	string ans(s.length(), '+');
-
-	// for (auto x : ans)
-	// 	cout << x << " ";
-	int j = 0;
-
-	for (int i = 0; i < s.length(); i += 2)
-	{
-		if (i % 2 == 0)
-		{
-			if (j == rem.length())
-				break;
-
-			char t = rem[j];
-			ans[i] = t;
-			j++;
-		}
-	}
-
-	cout << ans << endl;
+	//cout << abs(ansl - 1) << " " << ansr + 1 << endl;
 
 }
 
 
-int main() {
+int32_t main() {
 	file_i_o();
-	//int t; cin >> t;
+	// int t; cin>>t;
 
-	///while (t--) {
+	// while(t--){
 
 	solve();
-	//}
+	// }
 	return 0;
 }

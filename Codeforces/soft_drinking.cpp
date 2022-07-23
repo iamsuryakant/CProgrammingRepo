@@ -40,65 +40,32 @@ void file_i_o()
 
 void solve() {
 
-	string s; cin >> s;
-	// cout << s.length() << endl;
+	int n, k, l, c, d, p, nl, np;
+	cin >> n >> k >> l >> c >> d >> p >> nl >> np;
 
-	string rem = "";
+	int overd = k * l;
 
-	int count = 0, counts = 0;
+	int make = overd / nl;
 
-	sort(s.begin(), s.end());
+	int limes = c * d;
 
-	//cout << s << endl;
+	int salt = p / np;
 
-	for (int i = 0; i < s.length(); i++)
-	{
-		if (s[i] == '+')
-			count++;
-		else
-			counts++;
-	}
+	int mini = min(min(make, limes), salt);
 
+	cout << (mini / n) << endl;
 
-
-	for (int i = count; i < s.length(); i++)
-	{
-		rem += s[i];
-	}
-
-	// cout << rem << endl;
-
-	string ans(s.length(), '+');
-
-	// for (auto x : ans)
-	// 	cout << x << " ";
-	int j = 0;
-
-	for (int i = 0; i < s.length(); i += 2)
-	{
-		if (i % 2 == 0)
-		{
-			if (j == rem.length())
-				break;
-
-			char t = rem[j];
-			ans[i] = t;
-			j++;
-		}
-	}
-
-	cout << ans << endl;
-
+	// cout << overd << " " << make << " " << limes << " " << salt << endl;
 }
 
 
 int main() {
 	file_i_o();
-	//int t; cin >> t;
+	// int t; cin >> t;
 
-	///while (t--) {
+	// while (t--) {
 
 	solve();
-	//}
+	// }
 	return 0;
 }

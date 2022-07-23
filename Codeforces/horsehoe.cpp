@@ -40,65 +40,46 @@ void file_i_o()
 
 void solve() {
 
-	string s; cin >> s;
-	// cout << s.length() << endl;
+	int a, b, c, d;
+	cin >> a >> b >> c >> d;
+	int count = 0;
+	unordered_map<int, int>mp;
 
-	string rem = "";
+	mp[a]++;
+	mp[b]++;
+	mp[c]++;
+	mp[d]++;
 
-	int count = 0, counts = 0;
-
-	sort(s.begin(), s.end());
-
-	//cout << s << endl;
-
-	for (int i = 0; i < s.length(); i++)
+	for (auto it : mp)
 	{
-		if (s[i] == '+')
-			count++;
-		else
-			counts++;
-	}
-
-
-
-	for (int i = count; i < s.length(); i++)
-	{
-		rem += s[i];
-	}
-
-	// cout << rem << endl;
-
-	string ans(s.length(), '+');
-
-	// for (auto x : ans)
-	// 	cout << x << " ";
-	int j = 0;
-
-	for (int i = 0; i < s.length(); i += 2)
-	{
-		if (i % 2 == 0)
+		if (it.second > 1)
 		{
-			if (j == rem.length())
-				break;
-
-			char t = rem[j];
-			ans[i] = t;
-			j++;
+			count += it.second;
 		}
 	}
 
-	cout << ans << endl;
+	if (count == 0) {
+		cout << 0 << endl;
+	} else if ((count == 4) && ((a == b) && (b == c) && (c == d))) {
+		cout << (count - 1) << endl;
+	} else if ((count == 4) && (((a == c) || (a == d) || (a == b)) && ((b == c) || (b == d) || (b == a)))) {
+		cout << (count - 2) << endl;
+	} else {
+		cout << (count - 1) << endl;
+	}
+
+
 
 }
 
 
 int main() {
 	file_i_o();
-	//int t; cin >> t;
+	// int t; cin>>t;
 
-	///while (t--) {
+	// while(t--){
 
 	solve();
-	//}
+	// }
 	return 0;
 }
