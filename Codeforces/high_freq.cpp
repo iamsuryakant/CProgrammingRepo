@@ -39,12 +39,24 @@ void file_i_o()
 }
 
 void solve() {
-	int a, b, c, d; cin >> a >> b >> c >> d;
 
-	int A = max(a, b);
-	int B = max(c, d);
+	int n; cin >> n;
 
-	cout << (A + B) << endl;
+	vector<int> arr(n);
+
+	for (int i = 0; i < n; i++)
+	{
+		cin >> arr[i];
+	}
+
+	unordered_map<int, int> mp;
+
+	for (auto x : mp)
+	{
+		mp[x]++;
+	}
+
+
 
 }
 

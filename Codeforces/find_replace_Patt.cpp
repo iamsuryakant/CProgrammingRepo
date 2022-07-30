@@ -38,24 +38,72 @@ void file_i_o()
 #endif
 }
 
+
+
+
+
+
+
+
+vector<string> findAndReplacePattern(vector<string>& words, string pattern) {
+
+}
+
 void solve() {
-	int a, b, c, d; cin >> a >> b >> c >> d;
 
-	int A = max(a, b);
-	int B = max(c, d);
+	int n; cin >> n;
 
-	cout << (A + B) << endl;
+	vector<string>words(n);
+
+	for (int i = 0; i < n; i++)
+	{
+		cin >> words[i];
+	}
+
+	string pattern; cin >> pattern;
+
+	map<char, int> mp;
+
+	for (auto x : pattern) {
+		mp[x]++;
+	}
+
+	vector<map<char, int> > mp1(n);
+
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j <= i; j++)
+		{
+			mp1[i][words[j]]++;
+		}
+	}
+
+	for (int i = 0; i < n; i++)
+	{
+		for (auto x : mp1[i])
+			cout << x.first << " " << x.second << endl;
+	}
+
+
+
+	// for (auto x : mp)
+	// {
+	// 	cout << x.first << " " << x.second << endl;
+	// }
+
+	// for (auto x : words)
+	// 	cout << x << " ";
 
 }
 
 
 int main() {
 	file_i_o();
-	int t; cin >> t;
+	// int t; cin>>t;
 
-	while (t--) {
+	// while(t--){
 
-		solve();
-	}
+	solve();
+	// }
 	return 0;
 }

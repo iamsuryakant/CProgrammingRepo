@@ -39,12 +39,24 @@ void file_i_o()
 }
 
 void solve() {
-	int a, b, c, d; cin >> a >> b >> c >> d;
 
-	int A = max(a, b);
-	int B = max(c, d);
+	int n; cin >> n;
 
-	cout << (A + B) << endl;
+	string s, r; cin >> s >> r;
+
+	int count = 0;
+
+	for (int i = 0; i < n; i++)
+	{
+		if (s[i] != r[i])
+			count++;
+	}
+
+
+	if (count & 1)
+		cout << "0" << endl;
+	else
+		cout << "1" << endl;
 
 }
 

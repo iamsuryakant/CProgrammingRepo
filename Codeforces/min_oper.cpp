@@ -38,24 +38,110 @@ void file_i_o()
 #endif
 }
 
+int maximum(vector<int> m)
+{
+	int maxi  = 0;
+
+	for (int i = 0; i < m.size(); i++) {
+
+		if (m[i] > maxi) {
+			maxi  = i;
+		}
+	}
+
+	return maxi;
+}
+
+int secondLargest(vector<int> m, int maxi) {
+
+	int max2 = -1;
+	int x = INT_MIN;
+	for (int i = 0; i < m.size(); i++) {
+
+		if ( max2 == -1 && m[i] > x && i != maxi)
+			max2 = i;
+		else if (max2 != -1 && m[i] > m[max2] && i != maxi)
+			max2 = i;
+
+	}
+	return max2;
+}
+
+
+
+
+
+
+int min_oper(int n, vector<int> arr)
+{
+
+	unordered_map<int, int> mp;
+
+	for (auto x : arr) {
+		mp[x]++;
+	}
+
+
+	vector<int> m;
+
+	for (auto x : mp)
+	{
+		m.push_back(x.second);
+
+	}
+
+	int maxi = maximum(m);
+	int secondMax = secondLargest(m, maxi);
+
+
+
+	if (m.size() == 1)
+	{
+		return m[0];
+	}
+
+
+	int ans = 0;
+	int i1 = maxi, i2 = secondMax;
+	while (m[i1] != 0)
+	{
+		if (m[i2] == 0)
+		{
+			ans += m[i1];
+			m[i1] = 0;
+		} else {
+			ans += 1;
+			m[i1] -= 1;
+			m[i2] -= 1;
+		}
+
+		i1 = maximum(m), i2 = secondLargest(m, i1);
+	}
+
+	return ans;
+}
+
 void solve() {
-	int a, b, c, d; cin >> a >> b >> c >> d;
+	int n; cin >> n;
 
-	int A = max(a, b);
-	int B = max(c, d);
+	vector<int> A(n);
 
-	cout << (A + B) << endl;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> A[i];
+	}
 
+	cout << min_oper(n, A) << endl;
 }
 
 
 int main() {
 	file_i_o();
-	int t; cin >> t;
+	// int t; cin>>t;
 
-	while (t--) {
+	// while(t--){
 
-		solve();
-	}
+	solve();
+	// }
 	return 0;
 }
